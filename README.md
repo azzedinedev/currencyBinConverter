@@ -256,7 +256,7 @@ We create our test on methods.
 
 ### The result of testing
 
-To run the test we must call phpunit
+To run the test we must call PHPUnit
 
 ```
 $ vendor/bin/phpunit
