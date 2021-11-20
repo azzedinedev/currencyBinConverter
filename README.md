@@ -66,7 +66,7 @@ The main method is **results($inputFile)**
 ```
 
 ```
-/**
+    /**
      * Test if the country is european
      * @param string $countryCode (Code of country on 2 uppercase letters)
      * @return string (yes or no)
@@ -155,11 +155,13 @@ PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of
     }
 }
 ```
+
 - We install PHPUnit with composer.
 
 ```
 $ composer require –dev phpunit/phpunit ^8
 ```
+
 - At the end of the installation we see a successful message on the command line.
 
 <div align="center">
