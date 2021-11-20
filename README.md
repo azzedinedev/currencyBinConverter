@@ -90,16 +90,17 @@ The main method is **results($inputFile)**
 
 **[binlist.net](https://binlist.net)** is a public web service for looking up credit and debit card meta data<br>
 
-<h6>Limits : </h6><br>
+<h5>Limits : </h5>
 Requests are throttled at 10 per minute with a burst allowance of 10. If you hit the speed limit the service will return a 429 http status code.<br>
-<h6>IIN / BIN</h6><br>
+<h5>IIN / BIN</h5>
 The first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.) are known as the Issuer Identification Numbers (IIN), previously known as Bank Identification Number (BIN). These identify the institution that issued the card to the card holder.<br>
-<h6>Data</h6><br>
+<h5>Data</h5>
 The data backing this service is not a table of card number prefixes. That would be unreliable and provide you with too little information. The data is sourced from multiple places, filtered, prioritized, and combined to form the data you eventually see. Some data is formed based on assumptions we make by looking at adjoining cards.<br>
 Although this service is very accurate, don't expect it to be perfect.<br>
-<h6>The call </h6><br>
+<h5>The call </h5>
+
 ```
-    https://lookup.binlist.net/(The Bin Code)
+    https://lookup.binlist.net/(The-Bin-Code)
 ```
 
 #### 🏁 exchangeratesapi.io API
