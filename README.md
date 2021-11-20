@@ -10,7 +10,7 @@
 
 
 - [Application](#application)
-  - [Operations classes](#operations-classes)
+  - [Classe and methodes of the application](#classe-and-methodes-of-the-application)
   - [Used API](#used-api)
     - [🏁 binlist.net API](#-binlistnet-api)
     - [🏁 exchangeratesapi.io API](#-exchangeratesapiio-api)
@@ -32,7 +32,7 @@
 4. We install all required dependencies to doin a test with PHPUnit.
 5. We create a test file for PHPUnit.
 
-### Operations classes
+### Classe and methodes of the application
 
 We call our class file **appObject.php**.
 The name of the class is currency.
