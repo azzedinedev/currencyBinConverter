@@ -256,6 +256,12 @@ We create our test on methods.
 
 ### The result of testing
 
+To run the test we must call phpunit
+
+```
+$ vendor/bin/phpunit
+```
+
 If all it’s OK, the result show at the end **OK (10 tests, 11 assertions)** like this.
 
 ```
