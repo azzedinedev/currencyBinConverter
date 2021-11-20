@@ -2,13 +2,12 @@
 
 ---
 
-<p align="center"> Our project consists to retrieve the amounts of currencies based on user bin card, amount to be converted and the currency.
+<p align="justify"> Our project consists to retrieve the amounts of currencies based on user bin card, amount to be converted and the currency.
     <br> 
 </p>
 <h4>Table of Contents</h4>
 ---
 
-- [<h4>Table of Contents</h4>](#h4table-of-contentsh4)
 - [Application](#application)
   - [Operations classes](#operations-classes)
   - [Used API](#used-api)
