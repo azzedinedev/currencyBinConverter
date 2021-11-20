@@ -5,9 +5,11 @@
 <p align="justify"> Our project consists to retrieve the amounts of currencies based on user bin card, amount to be converted and the currency.
     <br> 
 </p>
+
 ## Table of Contents
 
 
+- [Table of Contents](#table-of-contents)
 - [Application](#application)
   - [Operations classes](#operations-classes)
   - [Used API](#used-api)
@@ -161,7 +163,9 @@ $ composer require –dev phpunit/phpunit ^8
 ```
 - At the end of the installation we see a successful message on the command line.
 
-![installation_PHPUnit](https://github.com/azzedinedev/currencyBinConverter/blob/master/assets/phpunit-installation.png)
+<p align="center">
+![installation_PHPUnit](https://github.com/azzedinedev/currencyBinConverter/blob/main/assets/phpunit-installation.png)
+</p>
 
 
 ### Configuration of PHPUnit?
