@@ -61,7 +61,7 @@ class currencyTest extends TestCase
      */
     public function testIsEuropean(){
         $currency = new currency();
-        $this->assertEquals('yes',$currency->isEu("AT"));
+        $this->assertEquals(true,$currency->isEu("AT"));
     }
     
     /**
@@ -69,7 +69,7 @@ class currencyTest extends TestCase
      */
     public function testIsNotEuropean(){
         $currency = new currency();
-        $this->assertEquals('no',$currency->isEu("DZ"));
+        $this->assertEquals(false,$currency->isEu("DZ"));
     }
     
     /**
@@ -79,6 +79,7 @@ class currencyTest extends TestCase
         $currency = new currency();
         $this->assertEquals(1,$currency->extractAmount('EUR',1));
     }
+
     /**
      * Check the final result
      * the results are stored on an array being 5 elements
@@ -90,5 +91,32 @@ class currencyTest extends TestCase
         
         $this->assertCount(5,$resultArray);
     }
+
+     /**
+     * Check the errors on BIN API
+     * the results must return false and the array of errors is not empty
+     */
+    public function testOnErrorAPIBin(){
+        $currency = new currency();
+        $currency->APIBin = "";
+        $result = $currency->results("input.txt");
+        
+        $this->assertFalse($result);
+        $this->assertNotEmpty($currency->errors);
+    }
+
+     /**
+     * Check the errors on Rates API
+     * the results must return false and the array of errors is not empty
+     */
+    public function testOnErrorAPIRates(){
+        $currency = new currency();
+        $currency->APIRates = "";
+        $result = $currency->results("input.txt");
+        
+        $this->assertFalse($result);
+        $this->assertNotEmpty($currency->errors);
+    }
+
 }
 ?>

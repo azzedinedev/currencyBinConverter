@@ -1,4 +1,4 @@
-<h3 align="center">Amount of money Converted from Bin cards</h3>
+<h3 align="center">Calculate commissions for transactions based on credit card number in EURO</h3>
 
 ---
 
@@ -11,7 +11,9 @@
 
 - [Table of Contents](#table-of-contents)
 - [Application](#application)
-  - [Operations classes](#operations-classes)
+  - [Operations class](#operations-class)
+    - [Configuration of the application](#configuration-of-the-application)
+    - [Methodes](#methodes)
   - [Used API](#used-api)
     - [🏁 binlist.net API](#-binlistnet-api)
     - [🏁 exchangeratesapi.io API](#-exchangeratesapiio-api)
@@ -28,17 +30,24 @@
 ## Application
 
 1. As an input we have a text file contains JSON lines. Each line contains an operation.
-2. We create an object to doing all operations.
+2. We create an object to do all operations.
 3. We create an application file.
-4. We install all required dependencies to doin a test with PHPUnit.
+4. We install all required dependencies to do a test with PHPUnit.
 5. We create a test file for PHPUnit.
 
-### Operations classes
+### Operations class
 
 We call our class file **appObject.php**.
 The name of the class is currency.
 The main method is **results($inputFile)**
 
+#### Configuration of the application
+In the constructor of the class you can configure the API
+$this->APIBin       = 'https://lookup.binlist.net/';
+$this->APIRates     = 'http://api.exchangeratesapi.io/latest?access_key=(your-acces-key)';
+or you can change the providers of BIN and rates
+
+#### Methodes
 ```
     /**
      * Print the results of the manipulation on currencies
@@ -85,20 +94,38 @@ The main method is **results($inputFile)**
     public function extractAmount($currency,$amount) {…}
 ```
 
-### Used API
+```
+   /** 
+     * Rounds up a float to a specified number of decimal places
+     * (basically acts like ceil() but allows for decimal places)
+     * @param float $value The number to be processedFunctions
+     * @param interger Number of decimals
+     */
+    function round_up($value, $places=0) {…}
+```
 
+```        
+    /**
+     * Show the errors
+     * @return Print the errors on screen
+     */
+    public function showErrros() {…}
+```
+
+### Used API
+{…}
 #### 🏁 binlist.net API
 
 **[binlist.net](https://binlist.net)** is a public web service for looking up credit and debit card meta data<br>
 
-<h6>Limits : </h6><br>
+<h5>Limits : </h5>
 Requests are throttled at 10 per minute with a burst allowance of 10. If you hit the speed limit the service will return a 429 http status code.<br>
-<h6>IIN / BIN</h6><br>
+<h5>IIN / BIN</h5>
 The first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.) are known as the Issuer Identification Numbers (IIN), previously known as Bank Identification Number (BIN). These identify the institution that issued the card to the card holder.<br>
-<h6>Data</h6><br>
+<h5>Data</h5>
 The data backing this service is not a table of card number prefixes. That would be unreliable and provide you with too little information. The data is sourced from multiple places, filtered, prioritized, and combined to form the data you eventually see. Some data is formed based on assumptions we make by looking at adjoining cards.<br>
 Although this service is very accurate, don't expect it to be perfect.<br>
-<h6>The call </h6><br>
+<h5>The call </h5>
 ```
     https://lookup.binlist.net/(The Bin Code)
 ```
@@ -111,7 +138,7 @@ ExchangeRatesApi.io is now proudly part of apilayer, a company that provides dev
 Exchange Rates API provides access to 170 global currencies and over 14,000 exchange rate conversion pairs. Both historical and real-time exchange rates are available with a data refresh rate as often as 60 seconds. Time-series and fluctuation data are also available based on your specific needs.<br>
 
 ```
-    http://api.exchangeratesapi.io/latest?access_key=(Your acces key)
+    http://api.exchangeratesapi.io/latest?access_key=(Your-acces-key)
 ```
 
 ### Implementation of the app
@@ -133,11 +160,24 @@ The result on the screen is like this because the amounts of currencies changes:
 
 ```
 1
-0.44325219454162
-1.5549561061548
-2.3049114116164
-47.676202304429
+0.44294002326321
+1.5553350574326
+2.3032881209687
+47.642585324893
 ```
+
+But after we use the methode "round_up"
+
+we can see the result rounded like this:
+
+```
+1
+0.45
+1.56
+2.31
+47.65
+```
+
 ## Testing the PHP code with PHPUnit
 
 ### What is PHPUnit?
@@ -163,9 +203,9 @@ $ composer require –dev phpunit/phpunit ^8
 ```
 - At the end of the installation we see a successful message on the command line.
 
-<p align="center">
+<div align="center">
 ![installation_PHPUnit](https://github.com/azzedinedev/currencyBinConverter/blob/main/assets/phpunit-installation.png)
-</p>
+</div>
 
 
 ### Configuration of PHPUnit?
@@ -248,6 +288,18 @@ We create our test on methods.
      * the results are stored on an array being 5 elements
      */
     public function testArrayOfResult(){…}
+
+    /**
+     * Check the errors on BIN API
+     * the results must return false and the array of errors is not empty
+     */
+    public function testOnErrorAPIBin(){…}
+
+     /**
+     * Check the errors on Rates API
+     * the results must return false and the array of errors is not empty
+     */
+    public function testOnErrorAPIRates(){…}   
 ```
 
 ### The result of testing
@@ -258,15 +310,17 @@ If all it’s OK, the result show at the end **OK (10 tests, 11 assertions)** li
 $ vendor/bin/phpunit
 PHPUnit 8.5.21 by Sebastian Bergmann and contributors.
 
-..........                                                        10 / 10 (100%)1
-0.44325219454162
-1.5549561061548
-2.3049114116164
-47.676202304429
+..........
+1
+0.45
+1.56
+2.31
+47.65
+..                                                      12 / 12 (100%)
 
-Time: 7.97 seconds, Memory: 4.00 MB
+Time: 13.46 seconds, Memory: 4.00 MB
 
-OK (10 tests, 11 assertions)
+OK (12 tests, 15 assertions)
 ```
 
 ## ✍️ Authors
