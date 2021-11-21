@@ -240,7 +240,7 @@ class currencyTest extends TestCase
 {…}
 ```
 
-We create our test on methods.
+We create our test with methods begins with "test".
 
 ```
     /**
