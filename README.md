@@ -27,7 +27,7 @@
 ## Application
 
 1. As an input we have a text file contains JSON lines. Each line contains an operation.
-2. We create an object to doing all operations.
+2. We create an object to do all operations.
 3. We create an application file.
 4. We install all required dependencies to do a test with PHPUnit.
 5. We create a test file for PHPUnit.
