@@ -43,8 +43,12 @@ The main method is **results($inputFile)**
 
 #### Configuration of the application
 In the constructor of the class you can configure the API
+
+```
 $this->APIBin       = 'https://lookup.binlist.net/';
 $this->APIRates     = 'http://api.exchangeratesapi.io/latest?access_key=(your-acces-key)';
+```
+
 or you can change the providers of BIN and rates
 
 #### Methodes
@@ -76,7 +80,7 @@ or you can change the providers of BIN and rates
 ```
 
 ```
-/**
+    /**
      * Test if the country is european
      * @param string $countryCode (Code of country on 2 uppercase letters)
      * @return string (yes or no)
