@@ -310,7 +310,7 @@ We create our test with methods begins with "test".
 
 ### The result of testing
 
-If all it’s OK, the result show at the end **OK (10 tests, 11 assertions)** like this.
+If all it’s OK, the result show at the end **OK (12 tests, 15 assertions)** like this.
 
 ```
 $ vendor/bin/phpunit
