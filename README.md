@@ -29,10 +29,10 @@
 1. As an input we have a text file contains JSON lines. Each line contains an operation.
 2. We create an object to doing all operations.
 3. We create an application file.
-4. We install all required dependencies to doin a test with PHPUnit.
+4. We install all required dependencies to do a test with PHPUnit.
 5. We create a test file for PHPUnit.
 
-### Classe and methodes of the application
+### Class and methodes of the application
 
 We call our class file **appObject.php**.
 The name of the class is currency.
