@@ -208,7 +208,9 @@ $ composer require –dev phpunit/phpunit ^8
 - At the end of the installation we see a successful message on the command line.
 
 <div align="center">
+
 ![installation_PHPUnit](https://github.com/azzedinedev/currencyBinConverter/blob/main/assets/phpunit-installation.png)
+
 </div>
 
 
